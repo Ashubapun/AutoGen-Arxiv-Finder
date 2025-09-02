@@ -1,4 +1,5 @@
 from autogen_agentchat.agents import AssistantAgent
+from autogen_agentchat.teams import RoundRobinGroupChat
 from autogen_core.models import UserMessage
 from autogen_ext.models.openai import OpenAIChatCompletionClient
 from dotenv import load_dotenv
@@ -6,6 +7,7 @@ load_dotenv()
 import os
 import arxiv
 from typing import List, Dict, AsyncGenerator
+import asyncio
 
 model_client = OpenAIChatCompletionClient(
         model = "gemini-1.5-flash-8b"
@@ -67,4 +69,18 @@ summarizer_agent = AssistantAgent(
                         ),
 )
 
-print(arxiv_search("agentic ai"))
+team = RoundRobinGroupChat(
+        participants = [arxiv_search_agent, summarizer_agent],
+        max_turns = 2
+        )
+
+
+async def run_team():
+    task = "Conduct a literature review on the topic - Autogen and return exactly 5 papers."
+
+    async for msg in team.run_stream(task=task):
+        print(msg)
+
+
+if __name__ == '__main__':
+    asyncio.run(run_team())
