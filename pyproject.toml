@@ -4,4 +4,10 @@ version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.11"
-dependencies = []
+dependencies = [
+    "arxiv>=2.2.0",
+    "autogen-agentchat>=0.7.4",
+    "autogen-core>=0.7.4",
+    "autogen-ext>=0.7.4",
+    "streamlit>=1.49.1",
+]
