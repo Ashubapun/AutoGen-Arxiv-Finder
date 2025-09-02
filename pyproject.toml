@@ -8,6 +8,9 @@ dependencies = [
     "arxiv>=2.2.0",
     "autogen-agentchat>=0.7.4",
     "autogen-core>=0.7.4",
-    "autogen-ext>=0.7.4",
+    "autogen-ext[openai]>=0.7.4",
+    "openai>=1.104.1",
+    "python-dotenv>=1.1.1",
     "streamlit>=1.49.1",
+    "tiktoken>=0.11.0",
 ]

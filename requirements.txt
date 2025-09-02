@@ -3,3 +3,7 @@ autogen-core
 autogen-ext
 streamlit
 arxiv
+python-dotenv
+autogen-ext[openai]
+tiktoken
+openai
